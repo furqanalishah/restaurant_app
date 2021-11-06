@@ -19,8 +19,8 @@ class EncryptionConfig:
 
 class POSTGRESConfig:
     POSTGRES_PARAMS = {
-        "POSTGRES_USER": os.environ.get("POSTGRES_USER", "syed"),
-        "POSTGRES_PASSWORD": os.environ.get("POSTGRES_PASSWORD", "syedfurqan"),
+        "POSTGRES_USER": os.environ.get("POSTGRES_USER", "root"),
+        "POSTGRES_PASSWORD": os.environ.get("POSTGRES_PASSWORD", "root"),
         "POSTGRES_HOST": os.environ.get("POSTGRES_HOST", "localhost"),
         "POSTGRES_PORT": os.environ.get("POSTGRES_PORT", "5432"),
         "POSTGRES_DATABASE": os.environ.get("POSTGRES_DATABASE", "restaurant_app")
