@@ -2,7 +2,7 @@ from apiflask import APIFlask
 from flask_sqlalchemy import SQLAlchemy
 
 from config import flask_config
-from web.apis.auth import auth
+
 from web.apis.restaurants import restaurants
 
 db = SQLAlchemy()
@@ -20,3 +20,5 @@ def create_app():
     app.register_blueprint(restaurants, url_prefix="/restaurants")
 
     return app
+
+from web.apis.auth import auth

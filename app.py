@@ -1,6 +1,6 @@
 from flask_migrate import Migrate
 
-from web import create_app, db, models  # noqa
+from web import create_app, db
 
 app = create_app()
 migrate = Migrate(app, db)
