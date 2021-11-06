@@ -1,3 +1,5 @@
+import uuid
+
 from sqlalchemy import Column, String
 
 from web import db
@@ -13,6 +15,7 @@ class User(db.Model):
     password_hash = Column(String(400), nullable=False)
 
     def __init__(self, name, username, email, password):
+        self.id = str(uuid.uuid4().hex)
         self.name = name
         self.username = username
         self.email = email
