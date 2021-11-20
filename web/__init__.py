@@ -1,4 +1,5 @@
 from apiflask import APIFlask
+from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 
 from config import flask_config
@@ -7,6 +8,7 @@ from web.apis.google import google_blueprint
 from web.apis.oauth import o_auth
 
 db = SQLAlchemy()
+mail = Mail()
 
 
 def create_app():
@@ -16,6 +18,7 @@ def create_app():
     app.logger.setLevel(config.LOGGING_LEVEL_MAPPED)
     db.init_app(app)
     db.app = app
+    mail.init_app(app)
 
     from web.apis.auth import auth
     from web.apis.restaurants import restaurants

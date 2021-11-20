@@ -6,7 +6,7 @@ from flask_dance.contrib.google import make_google_blueprint, google
 google_blueprint = make_google_blueprint(
     client_id=os.getenv('GOOGLE_CLIENT_ID'),
     client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
-    redirect_to="google.whatapp"
+    redirect_to="google.redirect"
 )
 
 
@@ -20,6 +20,6 @@ def index():
     return "You are {email} on Google".format(email=resp.json()["emails"][0]["value"])
 
 
-@google_blueprint.route("/whatsapp")
-def whatapp():
-    return "Google"
+@google_blueprint.route("/redirect")
+def redirect():
+    return "Google Authenticated"

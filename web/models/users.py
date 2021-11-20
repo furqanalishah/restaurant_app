@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, JSON
 
 from web import db
 from web.utils import Hash
@@ -13,6 +13,7 @@ class User(db.Model):
     username = Column(String(50), unique=True, nullable=False)
     email = Column(String(50), unique=True, nullable=False)
     password_hash = Column(String(400), nullable=False)
+    change_configuration = Column(JSON, nullable=True)
 
     def __init__(self, name, username, email, password):
         self.id = str(uuid.uuid4().hex)

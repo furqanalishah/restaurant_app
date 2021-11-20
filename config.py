@@ -46,6 +46,20 @@ class SQLAlchemyConfig:
     }
 
 
+class MailConfig:
+    MAIL_SERVER = "smtp.googlemail.com"
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
+
+    # gmail authentication
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME", "mefurqan123@gmail.com")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", "zdtttemvjaelapnq")
+
+    # mail accounts
+    MAIL_DEFAULT_SENDER = "mefurqan123@gmail.com"
+
+
 class FlaskConfig:
     __LOGGING_LEVEL_MAPPER = {
         "CRITICAL": logging.CRITICAL,
@@ -67,7 +81,7 @@ class FlaskConfig:
     MAX_CONTENT_LENGTH = 2048 * 2048
 
 
-class FlaskDevelopmentConfig(FlaskConfig, SQLAlchemyConfig):
+class FlaskDevelopmentConfig(FlaskConfig, SQLAlchemyConfig, MailConfig):
     # Flask Configs
     DEBUG = True
     USE_SSL = os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"

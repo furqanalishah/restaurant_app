@@ -6,7 +6,7 @@ from flask_dance.contrib.facebook import make_facebook_blueprint, facebook
 facebook_blueprint = make_facebook_blueprint(
     client_id=os.getenv('FACEBOOK_APP_ID'),
     client_secret=os.getenv('FACEBOOK_APP_SECRET'),
-    redirect_to="google.whatapp"
+    redirect_to="google.redirect"
 )
 
 
@@ -16,6 +16,6 @@ def index():
         return url_for("facebook.login")
 
 
-@facebook_blueprint.route("/whatsapp")
-def whatapp():
-    return "facebook"
+@facebook_blueprint.route("/redirect")
+def redirect():
+    return "Facebook Authenticated"
