@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from config import SQLAlchemyConfig
-from web.models import *  # noqa
+# from web.models import *  # noqa
 
 Session = sessionmaker(
     bind=create_engine(

@@ -19,11 +19,11 @@ class EncryptionConfig:
 
 class POSTGRESConfig:
     POSTGRES_PARAMS = {
-        "POSTGRES_USER": os.environ.get("POSTGRES_USER", "syed"),
-        "POSTGRES_PASSWORD": os.environ.get("POSTGRES_PASSWORD", "syedfurqan"),
+        "POSTGRES_USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "POSTGRES_PASSWORD": os.environ.get("POSTGRES_PASSWORD", "saif457"),
         "POSTGRES_HOST": os.environ.get("POSTGRES_HOST", "localhost"),
         "POSTGRES_PORT": os.environ.get("POSTGRES_PORT", "5432"),
-        "POSTGRES_DATABASE": os.environ.get("POSTGRES_DATABASE", "restaurant_app")
+        "POSTGRES_DATABASE": os.environ.get("POSTGRES_DATABASE", "resturant-app")
     }
 
     POSTGRES_DB_URL = "postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DATABASE}".format(
@@ -53,11 +53,11 @@ class MailConfig:
     MAIL_USE_SSL = False
 
     # gmail authentication
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME", "mefurqan123@gmail.com")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", "zdtttemvjaelapnq")
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME", "saifullahs2020@gmail.com")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", "saif457")
 
     # mail accounts
-    MAIL_DEFAULT_SENDER = "mefurqan123@gmail.com"
+    MAIL_DEFAULT_SENDER = "saifullahs2020@gmail.com"
 
 
 class FlaskConfig:
@@ -87,7 +87,7 @@ class FlaskDevelopmentConfig(FlaskConfig, SQLAlchemyConfig, MailConfig):
     USE_SSL = os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
     # Port is not a flask env variable but is used in a custom logic to set the port for the flask server
-    PORT = 8081
+    PORT = 5432 # 8081
 
 
 flask_config = {
