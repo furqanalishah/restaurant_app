@@ -6,7 +6,7 @@ from flask_mail import Message
 
 from web import db, mail
 from web.models import User
-from web.schemas.auth import RegisterUserSchema, LoginUserSchema, ForgotPasswordSchema, NewPasswordSchema
+from web.schemas.auth import RegisterUserRequestSchema, LoginUserRequestSchema, ForgotPasswordRequestSchema, NewPasswordRequestSchema
 from web.session import get_db_session
 from web.utils import Hash
 
@@ -14,7 +14,7 @@ auth = APIBlueprint("auth", "authentication", "Authentication")
 
 
 @auth.post("/register")
-@input(RegisterUserSchema)
+@input(RegisterUserRequestSchema)
 def register(data):
     user = db.session.query(User).filter_by(email=data['email']).first()
     if user:
@@ -34,7 +34,7 @@ def register(data):
 
 
 @auth.post("/login")
-@input(LoginUserSchema)
+@input(LoginUserRequestSchema)
 def login(data):
     user = db.session.query(User).filter_by(email=data['email']).first()
     if not user:
@@ -50,7 +50,7 @@ def login(data):
 
 
 @auth.post('/forgot_password')
-@input(ForgotPasswordSchema)
+@input(ForgotPasswordRequestSchema)
 def forgot_password(data):
     user = db.session.query(User).filter_by(email=data['email']).first()
     if not user:
@@ -98,7 +98,7 @@ def confirm_code(username, code):
 
 
 @auth.post('/password/new')
-@input(NewPasswordSchema)
+@input(NewPasswordRequestSchema)
 def create_new_password(data):
     user = db.session.query(User).filter_by(email=data["email"]).first()
     if not user:

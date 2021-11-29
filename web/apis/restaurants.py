@@ -5,7 +5,7 @@ from flask import jsonify
 
 from web import db
 from web.models import Restaurant
-from web.schemas.restaurant import AddRestaurantSchema, RestaurantQuerySchema
+from web.schemas.restaurant import AddRestaurantRequestSchema, RestaurantQuerySchema
 from web.session import get_db_session
 
 restaurants = APIBlueprint("restaurants", "restaurants", "Restaurants", url_prefix='/restaurants')
@@ -36,7 +36,7 @@ def get_restaurant(restaurant_id):
 
 
 @restaurants.post("/")
-@input(AddRestaurantSchema)
+@input(AddRestaurantRequestSchema)
 def add_restaurant(data):
     pprint(data)
     with get_db_session() as db_session:
